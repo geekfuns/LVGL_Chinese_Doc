@@ -2,7 +2,7 @@
 .. include:: /header.rst 
 :github_url: |github_link_base|/overview/indev.md
 ```
-# Input devices
+# 输入设备（Input devices）
 
 An input device usually means:
 - Pointer-like input device like touchpad or mouse

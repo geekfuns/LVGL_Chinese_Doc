@@ -2,7 +2,7 @@
 .. include:: /header.rst 
 :github_url: |github_link_base|/overview/event.md
 ```
-# Events
+# 事件（Events）
 
 Events are triggered in LVGL when something happens which might be interesting to the user, e.g. when an object
 - is clicked

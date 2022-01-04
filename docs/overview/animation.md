@@ -2,7 +2,7 @@
 .. include:: /header.rst 
 :github_url: |github_link_base|/overview/animation.md
 ```
-# Animations
+# 动画（Animations）
 
 You can automatically change the value of a variable between a start and an end value using animations.
 Animation will happen by periodically calling an "animator" function with the corresponding value parameter.

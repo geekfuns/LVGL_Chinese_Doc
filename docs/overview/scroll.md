@@ -2,7 +2,7 @@
 .. include:: /header.rst 
 :github_url: |github_link_base|/overview/scroll.md
 ```
-# Scroll
+# 滚动条（Scroll）
 
 ## Overview
 In LVGL scrolling works very intuitively: if an object is outside of its parent content area (the size without padding), the parent becomes scrollable and scrollbar(s) will appear. That's it.

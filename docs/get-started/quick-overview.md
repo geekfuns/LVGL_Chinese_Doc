@@ -3,7 +3,7 @@
 :github_url: |github_link_base|/get-started/quick-overview.md
 ```
 
-# Quick overview
+# 快速概览 Quick overview
 
 Here you can learn the most important things about LVGL.
 You should read this first to get a general impression and read the detailed [Porting](/porting/index) and [Overview](/overview/index) sections after that.

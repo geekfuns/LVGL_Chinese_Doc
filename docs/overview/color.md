@@ -2,7 +2,7 @@
 .. include:: /header.rst 
 :github_url: |github_link_base|/overview/color.md
 ```
-# Colors
+# 色彩（Colors）
 
 The color module handles all color-related functions like changing color depth, creating colors from hex code, converting between color depths, mixing colors, etc.
 

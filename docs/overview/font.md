@@ -2,7 +2,7 @@
 .. include:: /header.rst 
 :github_url: |github_link_base|/overview/font.md
 ```
-# Fonts
+# 字体（Fonts）
 
 In LVGL fonts are collections of bitmaps and other information required to render images of individual letters (glyph). 
 A font is stored in a `lv_font_t` variable and can be set in a style's *text_font* field. For example:

@@ -2,7 +2,7 @@
 .. include:: /header.rst 
 :github_url: |github_link_base|/overview/file-system.md
 ```
-# File system
+# 文件系统（File system）
 
 LVGL has a 'File system' abstraction module that enables you to attach any type of file system.
 A file system is identified by an assigned drive letter.
