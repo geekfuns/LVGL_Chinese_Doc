@@ -113,9 +113,7 @@ html_theme_options = {
     'collapse_navigation' : False,
     'logo_only': True,
 }
-# For site map generation
-html_baseurl = 'https://docs.lvgl.io/' + version + "/"
-sitemap_url_scheme = "{link}"
+
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -180,14 +178,6 @@ latex_elements = {
 ''',
 }
 
-# Grouping the document tree into LaTeX files. List of tuples
-# (source start file, target name, title,
-#  author, documentclass [howto, manual, or own class]).
-latex_documents = [
-    (master_doc, 'LVGL.tex', 'LVGL Documentation ' + version,
-     'LVGL community', 'manual'),
-]
-
 
 # -- Options for manual page output ---------------------------------------
 
@@ -197,34 +187,6 @@ man_pages = [
     (master_doc, 'lvgl', 'LVGL Documentation ' + version,
      [author], 1)
 ]
-
-
-# -- Options for Texinfo output -------------------------------------------
-
-# Grouping the document tree into Texinfo files. List of tuples
-# (source start file, target name, title, author,
-#  dir menu entry, description, category)
-texinfo_documents = [
-    (master_doc, 'LVGL', 'LVGL Documentation ' + version,
-     author, 'Contributors of LVGL', 'One line description of project.',
-     'Miscellaneous'),
-]
-
-
-breathe_projects = {
-  "lvgl":"xml/",
-}
-
-StandaloneHTMLBuilder.supported_image_types = [
-    'image/svg+xml',
-    'image/gif',  #prefer gif over png
-    'image/png',
-    'image/jpeg'
-]
-
-smartquotes = False
-
-_, repo_commit_hash = subprocess.getstatusoutput("git rev-parse HEAD")
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
