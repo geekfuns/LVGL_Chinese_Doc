@@ -3,12 +3,9 @@
 :github_url: |github_link_base|/index.md
 ```
 
-```eval_rst
-
-PDF version: :download:`LVGL.pdf <LVGL.pdf>`
-```
 
 # Welcome to the documentation of LVGL!
+# 欢迎来到LVGL中文文档，这是我在学习LVGL的过程中顺手翻译的作品，若有纰漏请多包涵
 
 <img src="_static/img/home_banner.jpg" style="width:100%">
 
