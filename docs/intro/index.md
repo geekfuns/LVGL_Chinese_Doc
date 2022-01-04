@@ -3,38 +3,40 @@
 :github_url: |github_link_base|/intro/index.md
 ```
 
-# Introduction
+# 介绍（Introduction）
 
-LVGL (Light and Versatile Graphics Library) is a free and open-source graphics library providing everything you need to create an embedded GUI with easy-to-use graphical elements, beautiful visual effects and a low memory footprint.
+LVGL（Light and Variables Graphics Library）是一个免费的开源图形库，提供了创建具有易于使用的图形元素、优美的视觉效果和低内存占用的嵌入式GUI所需的一切。
 
 
-## Key features
-- Powerful building blocks such as buttons, charts, lists, sliders, images, etc.
-- Advanced graphics with animations, anti-aliasing, opacity, smooth scrolling
-- Various input devices such as touchpad, mouse, keyboard, encoder, etc.
-- Multi-language support with UTF-8 encoding
-- Multi-display support, i.e. use multiple TFT, monochrome displays simultaneously
-- Fully customizable graphic elements with CSS-like styles
-- Hardware independent: use with any microcontroller or display
-- Scalable: able to operate with little memory (64 kB Flash, 16 kB RAM)
-- OS, external memory and GPU are supported but not required
-- Single frame buffer operation even with advanced graphic effects
-- Written in C for maximal compatibility (C++ compatible)
-- Simulator to start embedded GUI design on a PC without embedded hardware
-- Binding to MicroPython
-- Tutorials, examples, themes for rapid GUI design
-- Documentation is available online and as PDF
-- Free and open-source under MIT license
 
-## Requirements
-Basically, every modern controller which is able to drive a display is suitable to run LVGL. The minimal requirements are:
+## 特性（Key features）
+-功能强大的构建块，如按钮、图表、列表、滑块、图像等。
+-具有动画、抗锯齿、不透明度和平滑滚动的高级图形
+-各种输入设备，如触摸板、鼠标、键盘、编码器等。
+-多语言支持UTF-8编码
+-多显示器支持，即同时使用多个TFT单色显示器
+-具有类似CSS样式的完全可自定义图形元素
+-硬件独立：与任何微控制器或显示器一起使用
+-可扩展性：能够使用少量内存（64KB闪存、16KB RAM）运行
+-支持操作系统、外部内存和GPU，但不是必需的
+-单帧缓冲操作，即使具有高级图形效果
+-用C编写以实现最大兼容性（与C++兼容）
+-在没有嵌入式硬件的PC上启动嵌入式GUI设计的模拟器
+-绑定到MicroPython
+-快速GUI设计的教程、示例和主题
+-文档可在线或以PDF格式获取
+-麻省理工学院许可下的免费开源
+
+
+## 软硬件需求（Requirements）
+基本上，每个能够驱动显示器的现代控制器都适合运行LVGL。最低要求是：
 <ul>
-<li> 16, 32 or 64 bit microcontroller or processor</li>
-<li>&gt; 16 MHz clock speed is recommended</li>
-<li> Flash/ROM: &gt; 64 kB for the very essential components (&gt; 180 kB is recommended)</li>
+<li> 16, 32 or 64 bit 微控制器或处理器</li>
+<li>&gt; 推荐 16 MHz 时钟速度</li>
+<li> Flash/ROM: &gt; 基本要求：64 kB  (&gt; 推荐： 180 kB )</li>
 <li> RAM: 
   <ul>
-    <li> Static RAM usage: ~2 kB depending on the used features and object types</li>
+    <li> 静态RAM使用率：~2 kB，具体取决于使用的功能和对象类型 </li>
     <li> Stack: &gt; 2kB (&gt; 8 kB is recommended)</li>
     <li> Dynamic data (heap): &gt; 4 KB (&gt; 32 kB is recommended if using several objects).
 	    Set by <em>LV_MEM_SIZE</em> in <em>lv_conf.h</em>. </li>
@@ -42,7 +44,7 @@ Basically, every modern controller which is able to drive a display is suitable 
     <li> One frame buffer in the MCU or in an external display controller</li>
 	</ul>
 </li>
-<li> C99 or newer compiler</li>
+<li> C99 或更新的编译器 </li>
 <li> Basic C (or C++) knowledge: 
           <a href="https://www.tutorialspoint.com/cprogramming/c_pointers.htm">pointers</a>, 
           <a href="https://www.tutorialspoint.com/cprogramming/c_structures.htm">structs</a>, 
@@ -50,7 +52,7 @@ Basically, every modern controller which is able to drive a display is suitable 
 </ul>
 <em>Note that memory usage may vary depending on architecture, compiler and build options.</em>
 
-## License
+## 许可（License）
 The LVGL project (including all repositories) is licensed under [MIT license](https://github.com/lvgl/lvgl/blob/master/LICENCE.txt). 
 This means you can use it even in commercial projects.
 
@@ -61,7 +63,7 @@ Although you can get LVGL for free there is a massive amount of work behind it. 
 To make the LVGL project sustainable, please consider [contributing](/CONTRIBUTING) to the project. 
 You can choose from [many different ways of contributing](/CONTRIBUTING) such as simply writing a tweet about you are using LVGL, fixing bugs, translating the documentation, or even becoming a maintainer.
 
-## Repository layout
+## 仓库结构（Repository layout）
 All repositories of the LVGL project are hosted on GitHub: https://github.com/lvgl
 
 You will find these repositories there:

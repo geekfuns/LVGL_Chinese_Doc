@@ -4,8 +4,12 @@
 ```
 
 
+
+# 欢迎来到LVGL中文文档
+这是我在学习LVGL的过程中顺手翻译的作品，若有纰漏请多包涵
+
+另外，开头介绍性的文字由于重要程度较低，我将选择性翻译或者直接机翻
 # Welcome to the documentation of LVGL!
-# 欢迎来到LVGL中文文档，这是我在学习LVGL的过程中顺手翻译的作品，若有纰漏请多包涵
 
 <img src="_static/img/home_banner.jpg" style="width:100%">
 

@@ -1,4 +1,4 @@
-# Style properties
+# 样式属性（Style properties）
 
 ## Size and position
 Properties related to size, position, alignment and layout of the objects.
