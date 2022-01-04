@@ -65,9 +65,9 @@ source_suffix = ['.rst', '.md']
 master_doc = 'index'
 
 # General information about the project.
-project = 'LVGL'
+project = 'LVGL_Chinese_Documents'
 copyright = '2021, LVGL Kft'
-author = 'LVGL community'
+author = 'LVGL community & geekfuns'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
