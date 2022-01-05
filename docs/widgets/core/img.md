@@ -2,37 +2,43 @@
 .. include:: /header.rst 
 :github_url: |github_link_base|/widgets/img.md
 ```
-# Image (lv_img)
+# 图像部件 Image (lv_img)
 
 
-## Overview
+## 概览 Overview
 
-Images are the basic object to display images from flash (as arrays) or from files. Images can display symbols (`LV_SYMBOL_...`) too.
+图像是显示来自闪存（作为数组）或来自文件的图像的基本对象。 图像也可以显示符号（`LV_SYMBOL_...`）。
 
-Using the [Image decoder interface](/overview/image.html#image-decoder) custom image formats can be supported as well.
+使用 [图像解码器接口](/overview/image.html#image-decoder) [Image decoder interface](/overview/image.html#image-decoder) 也可以支持自定义图像格式。
 
-## Parts and Styles
-- `LV_PART_MAIN` A background rectangle that uses the typical background style properties and the image itself using the image style properties.
+## 部件块与样式（Parts and Styles）
 
-## Usage
+- `LV_PART_MAIN` 即显示图像的区域
 
-### Image source
-To provide maximum flexibility, the source of the image can be:
+## 用法（Usage）
 
-- a variable in code (a C array with the pixels).
-- a file stored externally (e.g. on an SD card).
-- a text with [Symbols](/overview/font).
+### 图像源（Image source）
 
-To set the source of an image, use `lv_img_set_src(img, src)`.
+为了提供最大的灵活性，图像的来源可以是：
 
-To generate a pixel array from a PNG, JPG or BMP image, use the [Online image converter tool](https://lvgl.io/tools/imageconverter) and set the converted image with its pointer: `lv_img_set_src(img1, &converted_img_var);`
-To make the variable visible in the C file, you need to declare it with `LV_IMG_DECLARE(converted_img_var)`.
+- 代码中的变量（带有像素的 C 数组）。
+- 外部存储的文件（例如在 SD 卡上）。
+- 带有 [Symbols](/overview/font) 的文本。
 
-To use external files, you also need to convert the image files using the online converter tool but now you should select the binary output format.
-You also need to use LVGL's file system module and register a driver with some functions for the basic file operation. Go to the [File system](/overview/file-system) to learn more.
-To set an image sourced from a file, use `lv_img_set_src(img, "S:folder1/my_img.bin")`.
+要设置图像的来源，请使用`lv_img_set_src(img, src)`
 
-You can also set a symbol similarly to [Labels](/widgets/core/label). In this case, the image will be rendered as text according to the *font* specified in the style.  It enables to use of light-weight monochrome "letters" instead of real images. You can set symbol like `lv_img_set_src(img1, LV_SYMBOL_OK)`.
+
+要从 PNG、JPG 或 BMP 图像生成像素数组，请使用 [在线图像转换工具](https://lvgl.io/tools/imageconverter) 并使用指针设置转换后的图像：`lv_img_set_src(img1, &converted_img_var );`
+
+要使该变量在 C 文件中可见，您需要使用 `LV_IMG_DECLARE(converted_img_var)` 声明它。
+
+要使用外部文件，需要使用在线转换器工具转换图像文件并选择二进制输出格式。
+
+您还需要使用 LVGL 的文件系统模块，并为基本文件操作注册一个具有一些功能的驱动程序。 转到 [文件系统](/overview/file-system) 了解更多信息。
+
+要设置来自文件的图像，请使用`lv_img_set_src(img, "S:folder1/my_img.bin")`。
+
+您还可以设置类似于 [标签](/widgets/core/label) 的符号。 在这种情况下，图像将根据样式中指定的 *font* 呈现为文本。 它可以使用轻量级的单色“字母”代替真实图像。 你可以设置像`lv_img_set_src(img1, LV_SYMBOL_OK)`这样的符号。
 
 ### Label as an image
 Images and labels are sometimes used to convey the same thing. For example, to describe what a button does. 

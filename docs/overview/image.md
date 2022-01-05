@@ -2,95 +2,103 @@
 .. include:: /header.rst 
 :github_url: |github_link_base|/overview/image.md
 ```
-# 图片（Images）
+# 图像（Images）
 
-An image can be a file or a variable which stores the bitmap itself and some metadata.
+图像在系统中是存储位图数据和元数据的文件或变量
 
-## Store images
-You can store images in two places
-- as a variable in internal memory (RAM or ROM)
-- as a file
+## 储存图像（Store images）
 
-### Variables
-Images stored internally in a variable are composed mainly of an `lv_img_dsc_t` structure with the following fields:
+图像可以存储在两个地方
+- 内部存储器（RAM 或 ROM）中的变量里
+- 文件
+
+### 变量（Variables）
+
+存储在变量中的图像主要由具有以下字段的 `lv_img_dsc_t` 结构体组成：
+
 - **header**
-  - *cf* Color format. See [below](#color-format)
-  - *w* width in pixels (<= 2048)
-  - *h* height in pixels (<= 2048)
-  - *always zero* 3 bits which need to be always zero
-  - *reserved* reserved for future use
-- **data** pointer to an array where the image itself is stored
-- **data_size** length of `data` in bytes
+  - *cf* 颜色格式（Color format）. See [below](#color-format)
+  - *w* 宽度（像素值）width in pixels (<= 2048)
+  - *h* 高度（像素值）height in pixels (<= 2048)
+  - *always zero* 3 bits 0 值 
+  - *reserved* 系统保留字段
+- **data** 指向存储图像本身的数组的指针pointer to an array where the image itself is stored
+- **data_size** `data` 字节长度 （bytes）
 
-These are usually stored within a project as C files. They are linked into the resulting executable like any other constant data.
+这些通常放在 C 文件中并存储在项目里。 它们像其他常量数据一样链接到生成的可执行文件中。
 
-### Files
-To deal with files you need to add a storage *Drive* to LVGL. In short, a *Drive* is a collection of functions (*open*, *read*, *close*, etc.) registered in LVGL to make file operations.
-You can add an interface to a standard file system (FAT32 on SD card) or you create your simple file system to read data from an SPI Flash memory.
-In every case, a *Drive* is just an abstraction to read and/or write data to memory.
-See the [File system](/overview/file-system) section to learn more.
+### 文件（Files）
 
-Images stored as files are not linked into the resulting executable, and must be read into RAM before being drawn. As a result, they are not as resource-friendly as images linked at compile time. However, they are easier to replace without needing to rebuild the main program.
+要处理文件，您需要向 LVGL 添加一个存储 *Drive*。 简而言之，*Drive* 是在 LVGL 中注册以进行文件操作的函数（*open*、*read*、*close* 等）的集合。在任何情况下，*Drive* 都只是读取和/或将数据写入内存的抽象。 
 
-## Color formats
-Various built-in color formats are supported:
-- **LV_IMG_CF_TRUE_COLOR** Simply stores the RGB colors (in whatever color depth LVGL is configured for).
-- **LV_IMG_CF_TRUE_COLOR_ALPHA** Like `LV_IMG_CF_TRUE_COLOR` but it also adds an alpha (transparency) byte for every pixel.
-- **LV_IMG_CF_TRUE_COLOR_CHROMA_KEYED** Like `LV_IMG_CF_TRUE_COLOR` but if a pixel has the `LV_COLOR_TRANSP` color (set in *lv_conf.h*) it will be transparent.
-- **LV_IMG_CF_INDEXED_1/2/4/8BIT** Uses a palette with 2, 4, 16 or 256 colors and stores each pixel in 1, 2, 4 or 8 bits.
-- **LV_IMG_CF_ALPHA_1/2/4/8BIT** **Only stores the Alpha value with 1, 2, 4 or 8 bits.** The pixels take the color of `style.img_recolor` and the set opacity. The source image has to be an alpha channel. This is ideal for bitmaps similar to fonts where the whole image is one color that can be altered.
+您可以向标准文件系统（SD 卡上的 FAT32）添加接口，或者创建简单的文件系统以从 SPI 闪存读取数据，在任何情况下，*Drive* 都只是读取和/或将数据写入内存的抽象。
 
-The bytes of `LV_IMG_CF_TRUE_COLOR` images are stored in the following order.
+具体请看 [File system](/overview/file-system) 
 
-For 32-bit color depth:
+存储为文件的图像不会链接到生成的可执行文件中，必须在显示之前读入 RAM。 因此，它们不像在编译时链接的图像资源那样友好。 但是，它们更容易替换而无需重建主程序。
+
+
+## 颜色格式（Color formats）
+支持各种内置颜色格式：
+- **LV_IMG_CF_TRUE_COLOR** 简单地存储 RGB 颜色（以 LVGL 配置的任何颜色深度）。
+- **LV_IMG_CF_TRUE_COLOR_ALPHA** 类似于`LV_IMG_CF_TRUE_COLOR`，但它还为每个像素添加了一个 alpha（透明度）字节。
+- **LV_IMG_CF_TRUE_COLOR_CHROMA_KEYED** 类似于`LV_IMG_CF_TRUE_COLOR`，但如果像素具有`LV_COLOR_TRANSP` 颜色（在*lv_conf.h* 中设置），它将是透明的。
+- **LV_IMG_CF_INDEXED_1/2/4/8BIT** 使用具有 2、4、16 或 256 种颜色的调色板，并以 1、2、4 或 8 位存储每个像素。
+- **LV_IMG_CF_ALPHA_1/2/4/8BIT**  **仅存储 1、2、4 或 8 位的 Alpha 值** 像素采用`style.img_recolor` 的颜色和设置的不透明度。 源图像必须是 Alpha 通道。 这非常适用于类似于字体的位图，其中整个图像是一种可以更改的颜色。
+
+`LV_IMG_CF_TRUE_COLOR` 图像的字节按以下顺序存储
+
+对于 32 位色深：
 - Byte 0: Blue
 - Byte 1: Green
 - Byte 2: Red
 - Byte 3: Alpha
 
-For 16-bit color depth:
+对于 16 位色深：
 - Byte 0: Green 3 lower bit, Blue 5 bit
 - Byte 1: Red 5 bit, Green 3 higher bit
 - Byte 2: Alpha byte (only with LV_IMG_CF_TRUE_COLOR_ALPHA)
 
-For 8-bit color depth:
+对于 8 位色深：
 - Byte 0: Red 3 bit, Green 3 bit, Blue 2 bit
 - Byte 2: Alpha byte (only with LV_IMG_CF_TRUE_COLOR_ALPHA)
 
 
-You can store images in a *Raw* format to indicate that it's not encoded with one of the built-in color formats and an external [Image decoder](#image-decoder) needs to be used to decode the image.
+您可以以 *Raw* 格式存储图像，以表明它没有使用其中一种内置颜色格式进行编码，并且需要使用外部 [图像解码器](#image-decoder) 来解码图像。
+
 - **LV_IMG_CF_RAW** Indicates a basic raw image (e.g. a PNG or JPG image).
 - **LV_IMG_CF_RAW_ALPHA** Indicates that an image has alpha and an alpha byte is added for every pixel.
 - **LV_IMG_CF_RAW_CHROMA_KEYED** Indicates that an image is chroma-keyed as described in `LV_IMG_CF_TRUE_COLOR_CHROMA_KEYED` above.
 
 
-## Add and use images
+## 添加与使用图像（Add and use images）
 
-You can add images to LVGL in two ways:
-- using the online converter
-- manually create images
+您可以通过两种方式将图像添加到 LVGL：
+- 使用在线转换器
+- 手动创建图像
 
-### Online converter
-The online Image converter is available here: https://lvgl.io/tools/imageconverter
+### 在线转换（Online converter）
+在线图像转换器：https://lvgl.io/tools/imageconverter
 
-Adding an image to LVGL via the online converter is easy.
+通过在线转换器将图像添加到 LVGL 很容易。
 
-1. You need to select a *BMP*, *PNG* or *JPG* image first.
-2. Give the image a name that will be used within LVGL.
-3. Select the [Color format](#color-formats).
-4. Select the type of image you want. Choosing a binary will generate a `.bin` file that must be stored separately and read using the [file support](#files). Choosing a variable will generate a standard C file that can be linked into your project.
-5. Hit the *Convert* button. Once the conversion is finished, your browser will automatically download the resulting file.
+1. 准备 *BMP*, *PNG* or *JPG* 格式的图像.
+2. 为图像指定在 LVGL 中的名称。
+3. 选择 [颜色格式](#color-formats) [Color format](#color-formats).
+4. 选择要生成的图像类型。 选择二进制文件将生成一个 `.bin` 文件，该文件必须单独存储并使用 [文件支持](#files) 读取。 选择一个变量将生成一个可以链接到您的项目的标准 C 文件。
+5. 点击*转换*按钮。 转换完成后，您的浏览器将自动下载生成的文件。
 
-In the generated C arrays (variables), bitmaps for all the color depths (1, 8, 16 or 32) are included in the C file, but only the color depth that matches `LV_COLOR_DEPTH` in *lv_conf.h* will actually be linked into the resulting executable.
+在生成的 C 数组（变量）中，所有色深（1、8、16 或 32）的位图都包含在 C 文件中，但实际上只有与 *lv_conf.h* 中的 `LV_COLOR_DEPTH` 匹配的色深才会链接到生成的可执行文件中。
 
-In the case of binary files, you need to specify the color format you want:
+对于二进制文件，您需要指定所需的颜色格式：
 - RGB332 for 8-bit color depth
 - RGB565 for 16-bit color depth
 - RGB565 Swap for 16-bit color depth (two bytes are swapped)
 - RGB888 for 32-bit color depth
 
-### Manually create an image
-If you are generating an image at run-time, you can craft an image variable to display it using LVGL. For example:
+### 手动创建（Manually create an image）
+
+如果您在运行时生成图像，您可以制作一个图像变量以使用 LVGL 显示它。 例如：
 
 ```c
 uint8_t my_img_data[] = {0x00, 0x01, 0x02, ...};
@@ -106,13 +114,13 @@ static lv_img_dsc_t my_img_dsc = {
 
 ```
 
-If the color format is `LV_IMG_CF_TRUE_COLOR_ALPHA` you can set `data_size` like `80 * 60 * LV_IMG_PX_SIZE_ALPHA_BYTE`.
+如果颜色格式是`LV_IMG_CF_TRUE_COLOR_ALPHA`，你可以将`data_size`设置为`80 * 60 * LV_IMG_PX_SIZE_ALPHA_BYTE`。
 
-Another (possibly simpler) option to create and display an image at run-time is to use the [Canvas](/widgets/core/canvas) object.
+在运行时创建和显示图像的另一个（可能更简单）方法是使用 [Canvas](/widgets/core/canvas) 对象。
 
-### Use images
+### 使用图像（Use images）
 
-The simplest way to use an image in LVGL is to display it with an [lv_img](/widgets/core/img) object:
+在 LVGL 中使用图像的最简单方法是使用 [lv_img](/widgets/core/img) 对象显示它：
 
 ```c
 lv_obj_t * icon = lv_img_create(lv_scr_act(), NULL);
@@ -123,11 +131,11 @@ lv_img_set_src(icon, &my_icon_dsc);
 /*From file*/
 lv_img_set_src(icon, "S:my_icon.bin");
 ```
+如果图像是使用在线转换器转换的，则应在调用图像的文件使用函数 `LV_IMG_DECLARE(my_icon_dsc)` 来声明图像。
 
-If the image was converted with the online converter, you should use `LV_IMG_DECLARE(my_icon_dsc)` to declare the image in the file where you want to use it.
 
 
-## Image decoder
+## 图像解码器（Image decoder）
 As you can see in the [Color formats](#color-formats) section, LVGL supports several built-in image formats. In many cases, these will be all you need. LVGL doesn't directly support, however, generic image formats like PNG or JPG.
 
 To handle non-built-in image formats, you need to use external libraries and attach them to LVGL via the *Image decoder* interface.
@@ -142,7 +150,7 @@ You can add any number of image decoders. When an image needs to be drawn, the l
 
 The `LV_IMG_CF_TRUE_COLOR_...`, `LV_IMG_INDEXED_...` and `LV_IMG_ALPHA_...` formats (essentially, all non-`RAW` formats) are understood by the built-in decoder.
 
-### Custom image formats
+### 自定义图像格式（Custom image formats）
 
 The easiest way to create a custom image is to use the online image converter and select `Raw`, `Raw with alpha` or `Raw with chroma-keyed` format. It will just take every byte of the binary file you uploaded and write it as an image "bitmap". You then need to attach an image decoder that will parse that bitmap and generate the real, renderable bitmap.
 
@@ -157,7 +165,7 @@ It's possible to decode an image to a non-true color format first (for example: 
 With *User encoded* formats, the color format in the open function (`dsc->header.cf`) should be changed according to the new format.
 
 
-### Register an image decoder
+### 注册图像解码器（Register an image decoder）
 
 Here's an example of getting LVGL to work with PNG images.
 
@@ -263,7 +271,7 @@ However, it can decode one line of the image without decoding the whole image, y
 To indicate that the *line read* function should be used, set `dsc->img_data = NULL` in the open function.
 
 
-### Manually use an image decoder
+### 手动使用解码器（Manually use an image decoder）
 
 LVGL will use registered image decoders automatically if you try and draw a raw image (i.e. using the `lv_img` object) but you can use them manually too. Create an `lv_img_decoder_dsc_t` variable to describe the decoding session and call `lv_img_decoder_open()`.
 
@@ -285,11 +293,13 @@ if(res == LV_RES_OK) {
 ```
 
 
-## Image caching
-Sometimes it takes a lot of time to open an image.
-Continuously decoding a PNG image or loading images from a slow external memory would be inefficient and detrimental to the user experience.
+## 图像缓存（Image caching）
 
-Therefore, LVGL caches a given number of images. Caching means some images will be left open, hence LVGL can quickly access them from `dsc->img_data` instead of needing to decode them again.
+有时打开图像需要很多时间。
+连续解码 PNG 图像或从缓慢的外部存储器加载图像将是低效的，并且用户体验不好。
+
+因此，LVGL 可以预先缓存给定数量的图像。 缓存意味着一些图像将保持打开状态，因此 LVGL 可以从通过 `dsc->img_data` 快速访问，减少加载时间。
+
 
 Of course, caching images is resource intensive as it uses more RAM to store the decoded image. LVGL tries to optimize the process as much as possible (see below), but you will still need to evaluate if this would be beneficial for your platform or not. Image caching may not be worth it if you have a deeply embedded target which decodes small images from a relatively fast storage medium.
 
