@@ -224,49 +224,54 @@ lv_color_t color = lv_obj_get_style_bg_color(btn, LV_PART_MAIN);
 ```
 
 ## 局部样式（Local styles）
-In addition to "normal" styles, objects can also store local styles. This concept is similar to inline styles in CSS (e.g. `<div style="color:red">`) with some modification. 
+除了 `普通` 样式之外，对象还可以存储局部样式。 这个概念类似于 CSS 中做了修改的内联样式 (e.g. `<div style="color:red">`) . 
 
-Local styles are like normal styles, but they can't be shared among other objects. If used, local styles are allocated automatically, and freed when the object is deleted.
-They are useful to add local customization to an object.
+局部样式与普通样式类似，但它们不能在其他对象之间共享。 如果使用，局部样式会自动分配，并在删除对象时释放。在向对象添加局部定义时很有用。
 
-Unlike in CSS, LVGL local styles can be assigned to states (*pseudo-classes*) and parts (*pseudo-elements*).
+与 CSS 不同，LVGL 局部样式可以分配给状态 (*pseudo-classes*) 和部分 (*pseudo-elements*)。
 
-To set a local property use functions like `lv_obj_set_style_<property_name>(obj, <value>, <selector>);`  
-For example:
+使用函数 `lv_obj_set_style_<property_name>(obj, <value>, <selector>);` 来分配局部样式
+
+例如:
 ```c
 lv_obj_set_style_bg_color(slider, lv_color_red(), LV_PART_INDICATOR | LV_STATE_FOCUSED);
 ```
-## Properties
-For the full list of style properties click [here](/overview/style-props).
+## 属性（Properties）
 
-### Typical background properties
-In the documentation of the widgets you will see sentences like "The widget uses the typical background properties". These "typical background properties" are the ones related to:
-- Background
-- Border
-- Outline
-- Shadow
-- Padding
-- Width and height transformation
-- X and Y translation
+请看 [here](/overview/style-props).
+
+### 典型背景属性（Typical background properties）
+在部件块的文档中，您将看到“部件块使用典型的背景属性”这样的句子。这些“典型背景属性”与以下相关：
+- 背景 Background
+- 边界 Border
+- 轮廓 Outline
+- 影子 Shadow
+- 填充 Padding
+- 宽度和高度变换 Width and height transformation
+- X和Y变换 X and Y translation
 
 
-## Transitions
-By default, when an object changes state (e.g. it's pressed) the new properties from the new state are set immediately. However, with transitions it's possible to play an animation on state change.
-For example, on pressing a button its background color can be animated to the pressed color over 300 ms.
 
-The parameters of the transitions are stored in the styles. It's possible to set 
-- the time of the transition
-- the delay before starting the transition 
-- the animation path (also known as the timing or easing function)
-- the properties to animate 
+## 变换（Transitions）
 
-The transition properties can be defined for each state. For example, setting a 500 ms transition time in the default state means that when the object goes to the default state a 500 ms transition time is applied. 
-Setting a 100 ms transition time in the pressed state causes a 100 ms transition when going to the pressed state.
-This example configuration results in going to the pressed state quickly and then going back to default slowly. 
+默认情况下，当对象更改状态时（例如按下），对象将立即更新到新状态所对应的属性。如果使用变换的方式，我们可以实现状态更改的动画效果。
 
-To describe a transition an `lv_transition_dsc_t` variable needs to be initialized and added to a style:
+例如，按下按钮时，其背景颜色可以在300毫秒内变化为按下状态颜色。
+
+变换的参数同样存储在样式里并且可以设置：
+- 变换时间 the time of the transition
+- 延迟变换时间 the delay before starting the transition 
+- 动画路径（也称为计时或缓动功能） the animation path (also known as the timing or easing function)
+- 动画的属性 the properties to animate 
+
+可以为每个状态定义变换属性，例如，给默认状态设置500ms的变换过程，当对象变为默认状态时就会使用500ms变换这个参数，同时，给按下状态设置 100 ms 的转换时间，则进入按下状态时，经历100ms的变换过程。
+
+此这个例子的效果就是按钮快速进入按下状态，然后缓慢返回默认状态。
+
+如果我们需要变换这一功能的话，则需要初始化变量 `lv_transition_dsc_t` 。
 ```c
 /*Only its pointer is saved so must static, global or dynamically allocated */
+/*由于传进去是指针，所以必须因为静态、全局或动态分配*/
 static const lv_style_prop_t trans_props[] = {
 											LV_STYLE_BG_OPA, LV_STYLE_BG_COLOR,
 											0, /*End marker*/
@@ -282,40 +287,43 @@ lv_style_set_transition(&style1, &trans1);
 TODO
 
 
-## Themes
-Themes are a collection of styles. If there is an active theme LVGL applies it on every created widget.
-This will give a default appearance to the UI which can then be modified by adding further styles.
+## 主题（Themes）
 
-Every display can have a different theme. For example, you could have a colorful theme on a TFT and monochrome theme on a secondary monochrome display.
+主题是样式的集合，如果启用主题，LVGL会将其应用到每个部件（widgets），这将为 UI 提供默认的外观，然后可以通过添加更多样式进行修改。
 
-To set a theme for a display, two steps are required:
-1. Initialize a theme
-2. Assign the initialized theme to a display.
+每个显示器都可以有不同的主题。 例如，您可以在 TFT 上使用彩色主题，在单色显示器上使用单色主题。
 
-Theme initialization functions can have different prototypes. This example shows how to set the "default" theme:
+要使用主题，需要进行两个设置：
+1. 初始化主题 Initialize a theme
+2. 将主题应用到对应的显示器 Assign the initialized theme to a display.
+
+主题初始化函数可以有不同的原型。 此示例显示如何设置“默认”主题：
 ```c
 lv_theme_t * th = lv_theme_default_init(display,  /*Use the DPI, size, etc from this display*/ 
+                                        /* 主次颜色*/
                                         LV_COLOR_PALETTE_BLUE, LV_COLOR_PALETTE_CYAN,   /*Primary and secondary palette*/
+                                        /*明暗主题*/
                                         false,    /*Light or dark mode*/ 
-                                        &lv_font_montserrat_10, &lv_font_montserrat_14, &lv_font_montserrat_18); /*Small, normal, large fonts*/
+                                        /*字体*/
+                                        &lv_font_montserrat_10, 
+                                        &lv_font_montserrat_14, 
+                                        &lv_font_montserrat_18); /*Small, normal, large fonts*/
                                         
-lv_disp_set_theme(display, th); /*Assign the theme to the display*/
+lv_disp_set_theme(display, th); /*将主题应用到对应的显示器 Assign the theme to the display*/
 ```
 
 
-The included themes are enabled in `lv_conf.h`. If the default theme is enabled by `LV_USE_THEME_DEFAULT 1` LVGL automatically initializes and sets it when a display is created.
+LVGL内置了主题并存放在 `lv_conf.h` 中，通过定义 `LV_USE_THEME_DEFAULT 1` 来使能默认主题。
 
-### Extending themes
+### 扩展主题（Extending themes）
 
-Built-in themes can be extended. 
-If a custom theme is created, a parent theme can be selected. The parent theme's styles will be added before the custom theme's styles. 
-Any number of themes can be chained this way. E.g. default theme -> custom theme -> dark theme.
+内置主题可以扩展，如果用户创建了自己的主题，LVGL将会把自定主题作为默认主题的子主题，可以设置任意数量的包含主题，如 default theme -> custom theme -> dark theme.
 
-`lv_theme_set_parent(new_theme, base_theme)` extends the `base_theme` with the `new_theme`.
+使用函数 `lv_theme_set_parent(new_theme, base_theme)` 来扩展主题，其中 `base_theme` 是父主题， `new_theme` 是子主题。
 
-There is an example for it below.
+示例如下
 
-## Examples
+## 例子（Examples）
 
 ```eval_rst
 
