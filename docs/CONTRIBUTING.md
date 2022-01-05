@@ -3,7 +3,7 @@
 :github_url: |github_link_base|/CONTRIBUTING.md
 ```
 
-# Contributing
+# 贡献（Contributing)
 
 ## Introduction
 

@@ -2,7 +2,7 @@
 .. include:: /header.rst 
 :github_url: |github_link_base|/get-started/index.md
 ```
-# Get started
+# 快速开始（Get started）
 
 There are several ways to get your feet wet with LVGL. Here is one recommended order of documents to read and things to play with when you are learning to use LVGL:
 1. Check the [Online demos](https://lvgl.io/demos) to see LVGL in action (3 minutes)

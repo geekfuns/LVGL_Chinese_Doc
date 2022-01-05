@@ -2,7 +2,7 @@
 .. include:: /header.rst 
 :github_url: |github_link_base|/libs/index.md
 ```
-# 3rd party libraries
+# 第三方库（3rd party libraries）
 
 
 ```eval_rst

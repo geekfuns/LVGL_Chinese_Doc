@@ -83,40 +83,45 @@
 在这种情况下，如果该属性是可继承的，则将在父对象中搜索该属性的值，直到某个对象为该属性指定了一个值。 父对象将使用自己的状态来确定值。因此，如果按下按钮，并且文本颜色来自此处，则将使用按下的文本颜色。
 
 
-## Parts
-Objects can be composed of *parts* which may each have their own styles. 
+## 部件块（Parts）
 
-The following predefined parts exist in LVGL:
-- `LV_PART_MAIN` A background like rectangle
-- `LV_PART_SCROLLBAR`  The scrollbar(s)
-- `LV_PART_INDICATOR` Indicator, e.g. for slider, bar, switch, or the tick box of the checkbox
-- `LV_PART_KNOB` Like a handle to grab to adjust a value
-- `LV_PART_SELECTED` Indicate the currently selected option or section
-- `LV_PART_ITEMS` Used if the widget has multiple similar elements (e.g. table cells)
-- `LV_PART_TICKS` Ticks on scales e.g. for a chart or meter
-- `LV_PART_CURSOR` Mark a specific place e.g. text area's or chart's cursor
-- `LV_PART_CUSTOM_FIRST` Custom part identifiers can be added starting from here.
+对象由**部件块**组成，每个部件块都有自己的样式。 
+
+LVGL中存在以下预定义的部件块：
+
+- `LV_PART_MAIN` 像矩形的背景
+- `LV_PART_SCROLLBAR`  滚动条
+- `LV_PART_INDICATOR` 指示器，例如用于滑块、条、开关或复选框的勾选框
+- `LV_PART_KNOB` 旋钮
+- `LV_PART_SELECTED` 指示当前选择的选项或部分
+- `LV_PART_ITEMS` 多个相似元素 (如图表中的单元格)
+- `LV_PART_TICKS` 刻度，例如在仪表上
+- `LV_PART_CURSOR` 光标，标记特定区域
+- `LV_PART_CUSTOM_FIRST` 自定义
 
 
-For example a [Slider](/widgets/core/slider) has three parts:
-- Background
-- Indicator
-- Knob
+如一个滑块 [Slider](/widgets/core/slider) 有以下几个部件块:
+- 背景
+- 指示器
+- 旋钮
 
-This means all three parts of the slider can have their own styles. See later how to add styles to objects and parts.
+这意味着滑块的三个部分都可以有自己的样式，请参见下文如何向对象和部件块添加样式。
 
-## Initialize styles and set/get properties
+## 初始化样式和设置/读取属性（Initialize styles and set/get properties）
 
-Styles are stored in `lv_style_t` variables. Style variables should be `static`, global or dynamically allocated. 
-In other words they cannot be local variables in functions which are destroyed when the function exits. 
-Before using a style it should be initialized with `lv_style_init(&my_style)`. 
-After initializing a style, properties can be added or changed.
 
-Property set functions looks like this: `lv_style_set_<property_name>(&style, <value>);` For example: 
+样式存储在 `lv_style_t` 变量中。样式变量应为静态`static`、全局`global`或动态分配`dynamically allocated`。
+
+换句话说，它们不能是函数中的局部变量，因为函数退出时局部变量会被销毁。
+
+在使用样式之前，应使用`lv_style_init(&my_style)`对其进行初始化。初始化样式后，可以添加或更改特性。
+
+
+使用函数 `lv_style_set_<property_name>(&style, <value>);` 来设置样式，例如：
 ```c
-static lv_style_t style_btn;
-lv_style_init(&style_btn);
-lv_style_set_bg_color(&style_btn, lv_color_hex(0x115588));
+static lv_style_t style_btn; //定义样式变量
+lv_style_init(&style_btn);  //初始化样式变量
+lv_style_set_bg_color(&style_btn, lv_color_hex(0x115588)); //设置颜色属性
 lv_style_set_bg_opa(&style_btn, LV_OPA_50);
 lv_style_set_border_width(&style_btn, 2);
 lv_style_set_border_color(&style_btn, lv_color_black());
@@ -127,13 +132,13 @@ lv_style_set_bg_color(&style_btn_red, lv_plaette_main(LV_PALETTE_RED));
 lv_style_set_bg_opa(&style_btn_red, LV_OPA_COVER);
 ```
 
-To remove a property use:
+如果想要删除属性可以使用如下的方式：
 
 ```c
 lv_style_remove_prop(&style, LV_STYLE_BG_COLOR);
 ```
 
-To get a property's value from a style:
+如果想要读取属性可以使用如下的方式：
 ```c
 lv_style_value_t v;
 lv_res_t res = lv_style_get_prop(&style, LV_STYLE_BG_COLOR, &v);
@@ -142,17 +147,17 @@ if(res == LV_RES_OK) {	/*Found*/
 }
 ```
 
-`lv_style_value_t` has 3 fields:
-- `num` for integer, boolean and opacity properties
-- `color` for color properties
-- `ptr` for pointer properties
+`lv_style_value_t` 有3个字段:
+- `num` 是整数、布尔值和不透明度属性
+- `color` 是颜色属性
+- `ptr` 是指针属性
 
-To reset a style (free all its data) use:
+要重置样式（清除其所有数据），请使用：
 ```c
 lv_style_reset(&style);
 ```
 
-Styles can be built as `const` too to save RAM:
+样式也可以构建为`const`以保存在RAM中：
 ```c
 const lv_style_const_prop_t style1_props[] = {
    LV_STYLE_CONST_WIDTH(50),
@@ -163,51 +168,61 @@ const lv_style_const_prop_t style1_props[] = {
 LV_STYLE_CONST_INIT(style1, style1_props);
 ```
 
-Later `const` style can be used like any other style but (obviously) new properties can not be added.
+`const`定义的样式可以像其他样式一样使用，但（显然）不能添加新属性。
+
+## 向部件添加和删除样式（Add and remove styles to a widget）
 
 
-## Add and remove styles to a widget
-A style on its own is not that useful. It must be assigned to an object to take effect.
+如果仅仅是定义一种样式并没有什么用，我们需要把样式指定给部件（widget）才能发挥它的效果。
 
-### Add styles
-To add a style to an object use `lv_obj_add_style(obj, &style, <selector>)`. `<selector>` is an OR-ed value of parts and state to which the style should be added. Some examples:
+### 添加样式（Add styles）
+使用函数 `lv_obj_add_style(obj, &style, <selector>)`向一个对象（object）添加样式. `<selector>` 是一个可以通过或运算定义的参数，它代表向某个部件块的某个状态添加样式，例如：
+
 - `LV_PART_MAIN | LV_STATE_DEFAULT`
-- `LV_STATE_PRESSED`: The main part in pressed state. `LV_PART_MAIN` can be omitted
-- `LV_PART_SCROLLBAR`: The scrollbar part in the default state. `LV_STATE_DEFAULT` can be omitted.
-- `LV_PART_SCROLLBAR | LV_STATE_SCROLLED`: The scrollbar part when the object is being scrolled
-- `0` Same as `LV_PART_MAIN | LV_STATE_DEFAULT`. 
-- `LV_PART_INDICATOR | LV_STATE_PRESSED | LV_STATE_CHECKED` The indicator part when the object is pressed and checked at the same time.
+- `LV_STATE_PRESSED`: 代表主部件被按下时 `LV_PART_MAIN` 可以省略
+- `LV_PART_SCROLLBAR`: 代表默认状态时的滚动条
+- `LV_STATE_DEFAULT` 可以省略
+- `LV_PART_SCROLLBAR | LV_STATE_SCROLLED`: 代表对象滚动时的滚动条部分
+- `0` 和 `LV_PART_MAIN | LV_STATE_DEFAULT` 的含义一样 
+- `LV_PART_INDICATOR | LV_STATE_PRESSED | LV_STATE_CHECKED` 代表指示器被按下并被选中时
 
-Using `lv_obj_add_style`: 
+使用样式 `lv_obj_add_style`: 
 ```c
-lv_obj_add_style(btn, &style_btn, 0);      				  /*Default button style*/
-lv_obj_add_style(btn, &btn_red, LV_STATE_PRESSED);  /*Overwrite only some colors to red when pressed*/
+lv_obj_add_style(btn, &style_btn, 0);      				  /*按钮默认样式Default button style*/
+lv_obj_add_style(btn, &btn_red, LV_STATE_PRESSED);  /*按钮按下时变为红色Overwrite only some colors to red when pressed*/
 ```
 
-### Remove styles
-To remove all styles from an object use `lv_obj_remove_style_all(obj)`.
+### 删除样式（Remove styles）
+使用函数 `lv_obj_remove_style_all(obj)` 来删除对象的所有样式。
 
-To remove specific styles use `lv_obj_remove_style(obj, style, selector)`. This function will remove `style` only if the `selector` matches with the `selector` used in `lv_obj_add_style`. 
-`style` can be `NULL` to check only the `selector` and remove all matching styles. The `selector` can use the `LV_STATE_ANY` and `LV_PART_ANY` values to remove the style from any state or part.
+使用函数 `lv_obj_remove_style(obj, style, selector)` 来删除指定部件块、状态的样式。
+此函数只会在匹配上在执行函数 `lv_obj_add_style` 时设置的 `selector` 参数之后才执行删除操作。
+
+参数`style` 可以为 `NULL` 来达到删除 `selector` 里的所有样式
 
 
-### Report style changes
-If a style which is already assigned to an object changes (i.e. a property is added or changed), the objects using that style should be notified. There are 3 options to do this:
-1. If you know that the changed properties can be applied by a simple redraw (e.g. color or opacity changes) just call `lv_obj_invalidate(obj)` or `lv_obj_invalidate(lv_scr_act())`. 
-2. If more complex style properties were changed or added, and you know which object(s) are affected by that style call `lv_obj_refresh_style(obj, part, property)`. 
-To refresh all parts and properties use `lv_obj_refresh_style(obj, LV_PART_ANY, LV_STYLE_PROP_ANY)`.
-3. To make LVGL check all objects to see if they use a style and refresh them when needed, call `lv_obj_report_style_change(&style)`. If `style` is `NULL` all objects will be notified about a style change.
+参数 `selector` 可以使用  `LV_STATE_ANY` 和 `LV_PART_ANY` 两个值来删除任何状态或者任何部件块的样式
 
-### Get a property's value on an object
-To get a final value of property - considering cascading, inheritance, local styles and transitions (see below) - property get functions like this can be used: 
-`lv_obj_get_style_<property_name>(obj, <part>)`. 
-These functions use the object's current state and if no better candidate exists they return a default value.  
-For example:
+
+
+### 报告样式变更（Report style changes）
+如果已分配给对象的样式发生更改（即添加或更改属性），则应通知使用该样式的对象。 有 3 个选项可以执行此操作：
+1. 如果更改的属性可以通过简单的重绘（例如更改颜色或不透明度）来更新，只需调用函数 `lv_obj_invalidate(obj)` 或 `lv_obj_invalidate(lv_scr_act())`。
+2. 如果更改或添加了更复杂的样式属性, 并且知道哪些对象调用了该样式，则调用函数 `lv_obj_refresh_style(obj, part, property)`。要刷新所有部件块和属性，请使用 `lv_obj_refresh_style(obj, LV_PART_ANY, LV_STYLE_PROP_ANY)`。
+3. 如果想要检查某个对象的样式是否被更改并同时刷新它们，可以调用函数`lv_obj_report_style_change(&style)`来实现。 如果 `style` 为 `NULL` 则所有对象都会收到样式被更改的报告
+
+### 获取某个对象的属性值（Get a property's value on an object）
+
+由于对象的样式存在级联、继承、局部样式和变换，某些时候我们可以需要获得属性的最终值，可以通过函数 `lv_obj_get_style_<property_name>(obj, <part>)` 来实现。
+
+函数会读取对象的当前状态，如果当前状态的属性值未被更改，则返回默认值。
+
+例如：
 ```c
 lv_color_t color = lv_obj_get_style_bg_color(btn, LV_PART_MAIN);
 ```
 
-## Local styles
+## 局部样式（Local styles）
 In addition to "normal" styles, objects can also store local styles. This concept is similar to inline styles in CSS (e.g. `<div style="color:red">`) with some modification. 
 
 Local styles are like normal styles, but they can't be shared among other objects. If used, local styles are allocated automatically, and freed when the object is deleted.

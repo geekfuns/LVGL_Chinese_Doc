@@ -1,4 +1,4 @@
-# Changelog
+# 更新日志（Changelog）
 
 ## [v8.1.0](https://github.com/lvgl/lvgl/compare/v8.0.2...v8.1.0) 10 November 2021
 
