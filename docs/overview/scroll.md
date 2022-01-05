@@ -92,41 +92,45 @@ TODO
 
 滚动传播称为“滚动链接”，可以使用 `LV_OBJ_FLAG_SCROLL_CHAIN` 标志来启用/禁用。
 
-If chaining is disabled the propagation stops on the object and the parent(s) won't be scrolled.
+如果禁用滚动链接，则传播将停止在对象上，并且不会传递到父对象上。
 
-### Scroll momentum
-When the user scrolls an object and releases it, LVGL can emulate inertial momentum for the scrolling. It's like the object was thrown and scrolling slows down smoothly. 
+### 滚动动量（Scroll momentum）
 
-The scroll momentum can be enabled/disabled with the `LV_OBJ_FLAG_SCROLL_MOMENTUM` flag. 
+当用户滚动对象并释放它时，LVGL可以模拟滚动的惯性动量，类似于对象被抛出并且滚动缓慢减慢的效果。
 
-### Elastic scroll
-Normally an object can't be scrolled past the extremeties of its content. That is the top side of the content can't be below the top side of the object. 
+可以使用 `LV_OBJ_FLAG_SCROLL_MOMENTUM` 标志启用/禁用滚动动量。
 
-However, with `LV_OBJ_FLAG_SCROLL_ELASTIC` a fancy effect is added when the user "over-scrolls" the content. The scrolling slows down, and the content can be scrolled inside the object. 
-When the object is released the content scrolled in it will be animated back to the valid position. 
 
-### Snapping
-The children of an object can be snapped according to specific rules when scrolling ends. Children can be made snappable individually with the `LV_OBJ_FLAG_SNAPPABLE` flag.
+### 弹性滚动（Elastic scroll）
 
-An object can align snapped children in four ways:
-- `LV_SCROLL_SNAP_NONE` Snapping is disabled. (default)
-- `LV_SCROLL_SNAP_START` Align the children to the left/top side of a scrolled object
-- `LV_SCROLL_SNAP_END` Align the children to the right/bottom side of a scrolled object
-- `LV_SCROLL_SNAP_CENTER` Align the children to the center of a scrolled object
+通常，对象不能滚动超过其内容的末端。 即内容的顶部不能低于对象的顶部。
+
+但是，使用 `LV_OBJ_FLAG_SCROLL_ELASTIC` 标志会在用户“滚动”内容时添加一种奇特的效果。 滚动变慢，内容可以在对象内部滚动，当对象被释放时，滚动到其中的内容将通过动画的形式回到有效位置。
+
+### 捕捉（Snapping）
+
+滚动结束时，可以根据特定规则捕捉对象的子项。可以使用 `LV_OBJ_FLAG_SNAPPABLE` 标志将子对象单独设置为可捕捉。 
+
+对象可以通过四种方式捕捉子对象：
+- `LV_SCROLL_SNAP_NONE` 禁用捕捉（默认）
+- `LV_SCROLL_SNAP_START` 将子对象与滚动对象的左侧/顶部对齐
+- `LV_SCROLL_SNAP_END` 将子对象与滚动对象的右侧/底部对齐
+- `LV_SCROLL_SNAP_CENTER` 将子对象与滚动对象的中心对齐
   
-Snap alignment is set with `lv_obj_set_scroll_snap_x/y(obj, LV_SCROLL_SNAP_...)`:
+捕捉对齐方式通过函数 `lv_obj_set_scroll_snap_x/y(obj, LV_SCROLL_SNAP_...)` 来设置:
  
-Under the hood the following happens:
-1. User scrolls an object and releases the screen
-2. LVGL calculates where the scroll would end considering scroll momentum
-3. LVGL finds the nearest scroll point
-4. LVGL scrolls to the snap point with an animation
  
-### Scroll one
-The "scroll one" feature tells LVGL to allow scrolling only one snappable child at a time. 
-This requires making the children snappable and setting a scroll snap alignment different from `LV_SCROLL_SNAP_NONE`.
+滚动在底层中具体的实现过程如下：
+1. 用户滚动对象并释放屏幕
+2. LVGL 考虑滚动动量计算滚动结束的位置
+3. LVGL 寻找最近的滚动点
+4. LVGL 滚动到带动画的捕捉点
 
-This feature can be enabled by the `LV_OBJ_FLAG_SCROLL_ONE` flag.
+### 单次滚动（Scroll one）
+
+单次滚动即LVGL只允许在滚动中捕捉一次子对象，这需要使子对象可捕捉并设置与`LV_SCROLL_SNAP_NONE`不同的滚动对齐对齐方式。
+
+此功能可以通过 `LV_OBJ_FLAG_SCROLL_ONE` 标志启用。
 
 ### Scroll on focus
 Imagine that there a lot of objects in a group that are on a scrollable object. Pressing the "Tab" button focuses the next object but it might be outside the visible area of the scrollable object. 
