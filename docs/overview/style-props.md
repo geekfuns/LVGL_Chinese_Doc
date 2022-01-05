@@ -1,19 +1,24 @@
 # 样式属性（Style properties）
 
-## Size and position
-Properties related to size, position, alignment and layout of the objects.
+## 大小与位置（Size and position）
 
-### width
-Sets the width of object. Pixel, percentage and `LV_SIZE_CONTENT` values can be used. Percentage values are relative to the width of the parent's content area.
+Properties related to size, position, alignment and layout of the objects.
+与对象的大小、位置、对齐方式和布局相关的属性。
+
+### 宽度（width）
+
+可以使用像素、百分比和`LV_SIZE_CONTENT`来设置对象的宽度。百分比值与父对象的内容区域的宽度相关。
+
+
 <ul>
-<li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> Widget dependent</li>
+<li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>默认值（Default）</strong> 与部件相关（Widget dependent）</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Layout</strong> Yes</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### min_width
-Sets a minimal width. Pixel and percentage values can be used. Percentage values are relative to the width of the parent's content area.
+### 最小宽度（min_width）
+设置最小宽度。可以使用像素值和百分比值。百分比值与父对象的内容区域的宽度相关。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -21,8 +26,8 @@ Sets a minimal width. Pixel and percentage values can be used. Percentage values
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### max_width
-Sets a maximal width. Pixel and percentage values can be used. Percentage values are relative to the width of the parent's content area.
+### 最大宽度（max_width）
+设置最大宽度。可以使用像素值和百分比值。百分比值与父对象的内容区域的宽度相关。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> LV_COORD_MAX</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -30,8 +35,9 @@ Sets a maximal width. Pixel and percentage values can be used. Percentage values
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### height
-Sets the height of object. Pixel, percentage and `LV_SIZE_CONTENT` can be used. Percentage values are relative to the height of the parent's content area.
+### 高度（height）
+可以使用像素、百分比和`LV_SIZE_CONTENT`来设置对象的高度。百分比值与父对象的内容区域的宽度相关。
+
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> Widget dependent</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -39,8 +45,8 @@ Sets the height of object. Pixel, percentage and `LV_SIZE_CONTENT` can be used. 
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### min_height
-Sets a minimal height. Pixel and percentage values can be used. Percentage values are relative to the width of the parent's content area.
+### 最小高度（min_height）
+设置最小高度。可以使用像素值和百分比值。百分比值与父对象的内容区域的宽度相关。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -48,8 +54,8 @@ Sets a minimal height. Pixel and percentage values can be used. Percentage value
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### max_height
-Sets a maximal height. Pixel and percentage values can be used. Percentage values are relative to the height of the parent's content area.
+### 最大高度（max_height）
+设置最大高度。可以使用像素值和百分比值。百分比值与父对象的内容区域的宽度相关。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> LV_COORD_MAX</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -58,7 +64,7 @@ Sets a maximal height. Pixel and percentage values can be used. Percentage value
 </ul>
 
 ### x
-Set the X coordinate of the object considering the set `align`. Pixel and percentage values can be used. Percentage values are relative to the width of the parent's content area.
+设置对象的x坐标，并需要考虑对齐  `align` 的方式. 可以使用像素值和百分比值。百分比值与父对象的内容区域的宽度相关。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -67,7 +73,7 @@ Set the X coordinate of the object considering the set `align`. Pixel and percen
 </ul>
 
 ### y
-Set the Y coordinate of the object considering the set `align`. Pixel and percentage values can be used. Percentage values are relative to the height of the parent's content area.
+设置对象的y坐标，并需要考虑对齐  `align` 的方式. 可以使用像素值和百分比值。百分比值与父对象的内容区域的宽度相关。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -75,8 +81,10 @@ Set the Y coordinate of the object considering the set `align`. Pixel and percen
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### align
-Set the alignment which tells from which point of the parent the X and Y coordinates should be interpreted. The possible values are: `LV_ALIGN_DEFAULT`, `LV_ALIGN_TOP_LEFT/MID/RIGHT`, `LV_ALIGN_BOTTOM_LEFT/MID/RIGHT`, `LV_ALIGN_LEFT/RIGHT_MID`, `LV_ALIGN_CENTER`. `LV_ALIGN_DEFAULT` means `LV_ALIGN_TOP_LEFT` with LTR base direction and `LV_ALIGN_TOP_RIGHT` with RTL base direction.
+### 对齐方式（align）
+设置对齐方式，该对齐方式告诉应从父节点的哪个位置来作为 X 和 Y 坐标的原点。 共有以下几种选项: `LV_ALIGN_DEFAULT`, `LV_ALIGN_TOP_LEFT/MID/RIGHT`, `LV_ALIGN_BOTTOM_LEFT/MID/RIGHT`, `LV_ALIGN_LEFT/RIGHT_MID`, `LV_ALIGN_CENTER`。
+
+`LV_ALIGN_DEFAULT` 代表 `LV_ALIGN_TOP_LEFT` ，即以左上角作为原点，`LV_ALIGN_TOP_RIGHT` 则是右上角作为原点。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> `LV_ALIGN_DEFAULT`</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -84,8 +92,8 @@ Set the alignment which tells from which point of the parent the X and Y coordin
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### transform_width
-Make the object wider on both sides with this value. Pixel and percentage (with `lv_pct(x)`) values can be used. Percentage values are relative to the object's width.
+### 变换宽度（transform_width）
+此值会使对象变得更宽。 可以使用像素和百分比（`lv_pct(x)`）值。 百分比值相对于对象的宽度而言。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -93,8 +101,8 @@ Make the object wider on both sides with this value. Pixel and percentage (with 
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> Yes</li>
 </ul>
 
-### transform_height
-Make the object higher on both sides with this value. Pixel and percentage (with `lv_pct(x)`) values can be used. Percentage values are relative to the object's height.
+### 变换高度（transform_height）
+此值会使对象在两侧变得更高。 可以使用像素和百分比（`lv_pct(x)`）值。 百分比值相对于对象的高度而言。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -102,8 +110,8 @@ Make the object higher on both sides with this value. Pixel and percentage (with
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> Yes</li>
 </ul>
 
-### translate_x
-Move the object with this value in X direction. Applied after layouts, aligns and other positioning. Pixel and percentage (with `lv_pct(x)`) values can be used. Percentage values are relative to the object's width.
+### 变换x坐标（translate_x）
+沿x方向移动对象，在完成布局、对齐和其他定位之后使用。 可以使用像素和百分比（使用 `lv_pct(x)`）值。 百分比值相对于对象的宽度而言。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -111,8 +119,8 @@ Move the object with this value in X direction. Applied after layouts, aligns an
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### translate_y
-Move the object with this value in Y direction. Applied after layouts, aligns and other positioning. Pixel and percentage (with `lv_pct(x)`) values can be used. Percentage values are relative to the object's height.
+### 变换y坐标（translate_y）
+沿y方向移动对象，在完成布局、对齐和其他定位之后使用。 可以使用像素和百分比（使用 `lv_pct(x)`）值。 百分比值相对于对象的高度而言。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -120,8 +128,8 @@ Move the object with this value in Y direction. Applied after layouts, aligns an
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### transform_zoom
-Zoom image-like objects. Multiplied with the zoom set on the object. The value 256 (or `LV_IMG_ZOOM_NONE`) means normal size, 128 half size, 512 double size, and so on
+### 缩放（transform_zoom）
+与图片缩放类似， 与对象的属性进行相乘。256(或者 `LV_IMG_ZOOM_NONE`)是普通尺寸，128则缩放到原来的一半，512则是放大一倍，以此类推。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -129,8 +137,8 @@ Zoom image-like objects. Multiplied with the zoom set on the object. The value 2
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> Yes</li>
 </ul>
 
-### transform_angle
- Rotate image-like objects. Added to the rotation set on the object. The value is interpreted in 0.1 degree unit. E.g. 45 deg. = 450 
+### 变换角度（transform_angle）
+与旋转图片类似类似地旋转对象，1代表0.1度，则 45 度 = 450 
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -138,11 +146,11 @@ Zoom image-like objects. Multiplied with the zoom set on the object. The value 2
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> Yes</li>
 </ul>
 
-## Padding
-Properties to describe spacing betwwen the parent's sides and the children and among the children. Very similar to the padding properties in HTML.
+## 填充（Padding）
+用于描述父级与子级之间以及子级之间间距的属性。 非常类似于 HTML 中的填充属性。
 
-### pad_top
-Sets the padding on the top. It makes the content area smaller in this direction.
+### 顶部填充（pad_top）
+在顶部设置填充。 它使这个方向的内容区域变得更小。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -150,8 +158,8 @@ Sets the padding on the top. It makes the content area smaller in this direction
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### pad_bottom
-Sets the padding on the bottom. It makes the content area smaller in this direction.
+### 底部填充（pad_bottom）
+在底部设置填充。 它使这个方向的内容区域变得更小。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -159,8 +167,8 @@ Sets the padding on the bottom. It makes the content area smaller in this direct
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### pad_left
-Sets the padding on the left. It makes the content area smaller in this direction.
+### 左部填充（pad_left）
+在左部设置填充。 它使这个方向的内容区域变得更小。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -168,8 +176,8 @@ Sets the padding on the left. It makes the content area smaller in this directio
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### pad_right
-Sets the padding on the right. It makes the content area smaller in this direction.
+### 右部填充（pad_right）
+在右部设置填充。 它使这个方向的内容区域变得更小。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -177,8 +185,8 @@ Sets the padding on the right. It makes the content area smaller in this directi
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### pad_row
-Sets the padding between the rows. Used by the layouts.
+### 行填充（pad_row）
+设置行之间的填充。 在布局时使用。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -186,8 +194,8 @@ Sets the padding between the rows. Used by the layouts.
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### pad_column
-Sets the padding between the columns. Used by the layouts.
+### 列填充（pad_column）
+设置列之间的填充。 在布局时使用
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -195,10 +203,10 @@ Sets the padding between the columns. Used by the layouts.
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-## Background
-Properties to describe the background color and image of the objects.
+## 背景（Background）
+用于描述对象的背景颜色和图像的属性。
 
-### bg_color
+### 背景颜色（bg_color）
 Set the background color of the object.
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> `0xffffff`</li>
@@ -208,16 +216,16 @@ Set the background color of the object.
 </ul>
 
 ### bg_opa
-Set the opacity of the background. Value 0, `LV_OPA_0` or `LV_OPA_TRANSP` means fully transparent, 256, `LV_OPA_100` or `LV_OPA_COVER` means fully covering, other values or LV_OPA_10, LV_OPA_20, etc means semi transparency.
+设置背景的不透明度。`0` , `LV_OPA_0` 或 `LV_OPA_TRANSP` 意味着完全透明, `256` , `LV_OPA_100` 或 `LV_OPA_COVER` 意味着不透明, 其他值或 `LV_OPA_10`、`LV_OPA_20` 等表示半透明。
 <ul>
-<li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> `LV_OPA_TRANSP`</li>
+<li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> `LV_OPA_TRANSP` </li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Layout</strong> No</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### bg_grad_color
-Set the gradient color of the background. Used only if `grad_dir` is not `LV_GRAD_DIR_NONE`
+### 渐变色（bg_grad_color）
+设置背景的渐变色. 只有在 `grad_dir` 不是 `LV_GRAD_DIR_NONE` 时生效。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> `0x000000`</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -225,8 +233,8 @@ Set the gradient color of the background. Used only if `grad_dir` is not `LV_GRA
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### bg_grad_dir
-Set the direction of the gradient of the background. The possible values are `LV_GRAD_DIR_NONE/HOR/VER`.
+### 渐变方向（bg_grad_dir）
+设置背景渐变的方向. 有三个值 `LV_GRAD_DIR_NONE/HOR/VER`.
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> `LV_GRAD_DIR_NONE`</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -234,8 +242,8 @@ Set the direction of the gradient of the background. The possible values are `LV
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### bg_main_stop
-Set the point from which the background color should start for gradients. 0 means to top/left side, 255 the bottom/right side, 128 the center, and so on
+### 背景色起点（bg_main_stop）
+设置背景色的起点。 0 表示顶部/左侧，255 表示底部/右侧，128 表示中心，依此类推
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -243,8 +251,8 @@ Set the point from which the background color should start for gradients. 0 mean
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### bg_grad_stop
-Set the point from which the background's gradient color should start. 0 means to top/left side, 255 the bottom/right side, 128 the center, and so on
+### 背景渐变色起点（bg_grad_stop）
+设置背景渐变颜色的起点。 0 表示顶部/左侧，255 表示底部/右侧，128 表示中心，依此类推
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 255</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -252,8 +260,8 @@ Set the point from which the background's gradient color should start. 0 means t
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### bg_img_src
-Set a background image. Can be a pointer to `lv_img_dsc_t`, a path to a file or an `LV_SYMBOL_...`
+### 背景图片（bg_img_src）
+设置背景图像。 可以是指向 `lv_img_dsc_t` 的指针、文件路径或`LV_SYMBOL_...`
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> `NULL`</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -261,8 +269,8 @@ Set a background image. Can be a pointer to `lv_img_dsc_t`, a path to a file or 
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> Yes</li>
 </ul>
 
-### bg_img_opa
-Set the opacity of the background image. Value 0, `LV_OPA_0` or `LV_OPA_TRANSP` means fully transparent, 256, `LV_OPA_100` or `LV_OPA_COVER` means fully covering, other values or LV_OPA_10, LV_OPA_20, etc means semi transparency.
+### 背景图片透明度（bg_img_opa）
+设置背景图片的不透明度。`0` , `LV_OPA_0` 或 `LV_OPA_TRANSP` 意味着完全透明, `256` , `LV_OPA_100` 或 `LV_OPA_COVER` 意味着不透明, 其他值或 `LV_OPA_10`、`LV_OPA_20` 等表示半透明。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> `LV_OPA_COVER`</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -270,8 +278,8 @@ Set the opacity of the background image. Value 0, `LV_OPA_0` or `LV_OPA_TRANSP` 
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### bg_img_recolor
-Set a color to mix to the background image.
+### 背景图片重新着色（bg_img_recolor）
+设置一种颜色以混合到背景图像。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> `0x000000`</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -279,8 +287,8 @@ Set a color to mix to the background image.
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### bg_img_recolor_opa
-Set the intensity of background image recoloring. Value 0, `LV_OPA_0` or `LV_OPA_TRANSP` means no mixing, 256, `LV_OPA_100` or `LV_OPA_COVER` means full recoloring, other values or LV_OPA_10, LV_OPA_20, etc are interpreted proportionally.
+### 背景图片重新着色强度（bg_img_recolor_opa）
+设置背景图像重新着色的强度。 值 0、`LV_OPA_0` 或 `LV_OPA_TRANSP` 表示不混合，256、`LV_OPA_100` 或 `LV_OPA_COVER` 表示完全重新着色，其他值或 LV_OPA_10、LV_OPA_20 等按比例解释。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> `LV_OPA_TRANSP`</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -288,8 +296,8 @@ Set the intensity of background image recoloring. Value 0, `LV_OPA_0` or `LV_OPA
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### bg_img_tiled
-If enbaled the background image will be tiled. The possible values are `true` or `false`.
+### 背景图片平铺（bg_img_tiled）
+如果启用，背景图像将被平铺。 可能的值为“true”或“false”。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -297,10 +305,10 @@ If enbaled the background image will be tiled. The possible values are `true` or
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-## Border
-Properties to describe the borders
+## 边框（Border）
+描述边狂的属性
 
-### border_color
+### 边框颜色（border_color）
 Set the color of the border
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> `0x000000`</li>
@@ -309,8 +317,8 @@ Set the color of the border
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### border_opa
-Set the opcitiy of the border. Value 0, `LV_OPA_0` or `LV_OPA_TRANSP` means fully transparent, 256, `LV_OPA_100` or `LV_OPA_COVER` means fully covering, other values or LV_OPA_10, LV_OPA_20, etc means semi transparency.
+### 边框不透明度（border_opa）
+设置边框的不透明度。 `0` , `LV_OPA_0` 或 `LV_OPA_TRANSP` 意味着完全透明, `256` , `LV_OPA_100` 或 `LV_OPA_COVER` 意味着不透明, 其他值或 `LV_OPA_10`、`LV_OPA_20` 等表示半透明。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> `LV_OPA_COVER`</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
@@ -318,8 +326,8 @@ Set the opcitiy of the border. Value 0, `LV_OPA_0` or `LV_OPA_TRANSP` means full
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### border_width
-Set hte width of the border. Only pixel values can be used.
+### 边框宽度（border_width）
+设置边框的宽度。 只能使用像素值。
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Inherited</strong> No</li>
