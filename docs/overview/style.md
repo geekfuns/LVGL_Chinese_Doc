@@ -21,19 +21,20 @@
 
 ## 状态（States）
 对象可以处于以下状态的组合：
-- `LV_STATE_DEFAULT` (0x0000) Normal, released state
-- `LV_STATE_CHECKED` (0x0001) Toggled or checked state
-- `LV_STATE_FOCUSED` (0x0002) Focused via keypad or encoder or clicked via touchpad/mouse 
-- `LV_STATE_FOCUS_KEY` (0x0004) Focused via keypad or encoder but not via touchpad/mouse 
-- `LV_STATE_EDITED` (0x0008) Edit by an encoder
-- `LV_STATE_HOVERED` (0x0010) Hovered by mouse (not supported now)
-- `LV_STATE_PRESSED` (0x0020) Being pressed
-- `LV_STATE_SCROLLED` (0x0040) Being scrolled
-- `LV_STATE_DISABLED` (0x0080) Disabled state
-- `LV_STATE_USER_1` (0x1000) Custom state
-- `LV_STATE_USER_2` (0x2000) Custom state
-- `LV_STATE_USER_3` (0x4000) Custom state
-- `LV_STATE_USER_4` (0x8000) Custom state
+
+- `LV_STATE_DEFAULT` 正常、释放状态
+- `LV_STATE_CHECKED` 切换或选中状态
+- `LV_STATE_FOCUSED` 被键盘、编码器或触摸板/鼠标选中
+- `LV_STATE_FOCUS_KEY` 通过键盘或编码器选中，但不通过触摸板/鼠标选中
+- `LV_STATE_EDITED` 由编码器编辑
+- `LV_STATE_HOVERED` 鼠标悬停（暂不支持）
+- `LV_STATE_PRESSED` 点击中
+- `LV_STATE_SCROLLED` 滚动中
+- `LV_STATE_DISABLED` 去使能状态
+- `LV_STATE_USER_1` 用户定义
+- `LV_STATE_USER_2` 用户定义
+- `LV_STATE_USER_3` 用户定义
+- `LV_STATE_USER_4` 用户定义
   
 一个对象可以同时处于聚焦和按下等状态的组合。 这表示为 `LV_STATE_FOCUSED | LV_STATE_PRESSED`. 
 
