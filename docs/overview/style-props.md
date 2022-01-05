@@ -335,7 +335,7 @@ Set the color of the border
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-### border_side
+### 边界尺寸（border_side）
 Set ony which side(s) the border should be drawn. The possible values are `LV_BORDER_SIDE_NONE/TOP/BOTTOM/LEFT/RIGHT/INTERNAL`. OR-ed calues an be used as well, e.g. `LV_BORDER_SIDE_TOP | LV_BORDER_SIDE_LEFT`.
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> `LV_BORDER_SIDE_NONE`</li>
@@ -353,10 +353,10 @@ Sets whether the the border should be drawn before or after the children ar draw
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Ext. draw</strong> No</li>
 </ul>
 
-## Outline
-Properties to describe the outline. It's like a border but drawn outside of the rectangles.
+## 轮廓（Outline）
+描述轮廓的属性。它像边框，但绘制在矩形之外。
 
-### outline_width
+### 轮廓宽度（outline_width）
 Set the width of the outline in pixels. 
 <ul>
 <li style='display:inline; margin-right: 20px; margin-left: 0px'><strong>Default</strong> 0</li>

@@ -2,29 +2,31 @@
 .. include:: /header.rst 
 :github_url: |github_link_base|/overview/scroll.md
 ```
-# 滚动条（Scroll）
+# 滚动（Scroll）
 
-## Overview
-In LVGL scrolling works very intuitively: if an object is outside of its parent content area (the size without padding), the parent becomes scrollable and scrollbar(s) will appear. That's it.
+## 概览（Overview）
 
-Any object can be scrollable including `lv_obj_t`, `lv_img`, `lv_btn`, `lv_meter`, etc
+在 LVGL 中，滚动的工作非常直观：如果一个对象在其父内容区域（没有填充的大小）之外，则父对象变为可滚动并且会出现滚动条。
 
-The object can either be scrolled horizontally or vertically in one stroke; diagonal scrolling is not possible.
+任何对象都可以滚动，包括 `lv_obj_t`, `lv_img`, `lv_btn`, `lv_meter`, 等等。
 
-### Scrollbar
+对象可以一次水平或垂直滚动，但是不能对角。
+
+### 滚动条（Scrollbar）
  
-#### Mode
-Scrollbars are displayed according to a configured `mode`. The following `mode`s exist:
-- `LV_SCROLLBAR_MODE_OFF`  Never show the scrollbars
-- `LV_SCROLLBAR_MODE_ON`  Always show the scrollbars
-- `LV_SCROLLBAR_MODE_ACTIVE` Show scroll bars while a object is being scrolled
-- `LV_SCROLLBAR_MODE_AUTO`  Show scroll bars when the content is large enough to be scrolled
+#### 模式（Mode）
+滚动条根据配置的“模式”显示。 存在以下“模式”：
+- `LV_SCROLLBAR_MODE_OFF`  不显示滚动条
+- `LV_SCROLLBAR_MODE_ON`  显示滚动条
+- `LV_SCROLLBAR_MODE_ACTIVE` 在滚动时显示滚动条
+- `LV_SCROLLBAR_MODE_AUTO`  当内容足够大可以滚动时显示滚动条
 
-`lv_obj_set_scrollbar_mode(obj, LV_SCROLLBAR_MODE_...)` sets the scrollbar mode on an object.
+可以通过函数 `lv_obj_set_scrollbar_mode(obj, LV_SCROLLBAR_MODE_...)` 在对象上设置滚动条模式。
 
 
-#### Styling
-The scrollbars have their own dedicated part, called `LV_PART_SCROLLBAR`. For example a scrollbar can turn to red like this:
+#### 样式（Styling）
+
+滚动条有自己的专用的部件块`LV_PART_SCROLLBAR`。 例如，滚动条可以像这样变成红色：
 ```c
 static lv_style_t style_red;
 lv_style_init(&style_red);
@@ -34,9 +36,9 @@ lv_style_set_bg_color(&style_red, lv_color_red());
 
 lv_obj_add_style(obj, &style_red, LV_PART_SCROLLBAR);
 ```
+对象在滚动时进入`LV_STATE_SCROLLED`状态。 这允许在滚动时向滚动条或对象本身添加不同的样式。
 
-An object goes to the `LV_STATE_SCROLLED` state while it's being scrolled. This allows adding different styles to the scrollbar or the object itself when scrolled.
-This code makes the scrollbar blue when the object is scrolled:
+例如，当对象滚动时，此代码使滚动条变为蓝色：
 ```c
 static lv_style_t style_blue;
 lv_style_init(&style_blue);
@@ -47,49 +49,49 @@ lv_style_set_bg_color(&style_blue, lv_color_blue());
 lv_obj_add_style(obj, &style_blue, LV_STATE_SCROLLED | LV_PART_SCROLLBAR);
 ```
 
-If the base direction of the `LV_PART_SCROLLBAR` is RTL (`LV_BASE_DIR_RTL`) the vertical scrollbar will be placed on the left. 
-Note that, the `base_dir` style property is inherited. Therefore, it can be set directly on the `LV_PART_SCROLLBAR` part of an object
-or on the object's or any parent's main part to make a scrollbar inherit the base direction. 
+如果`LV_PART_SCROLLBAR` 的基本方向是RTL (`LV_BASE_DIR_RTL`)（向右滚动），则垂直滚动条将放置在左侧。
+请注意，`base_dir` 样式属性是继承的。 因此，它可以直接设置在对象的`LV_PART_SCROLLBAR`部分，或在对象或任何父级的主要部分上使滚动条继承基本方向。
 
-### Events
-The following events are related to scrolling:
-- `LV_EVENT_SCROLL_BEGIN` Scrolling begins
-- `LV_EVENT_SCROLL_END` Scrolling ends
-- `LV_EVENT_SCROLL` Scroll happened. Triggered on every position change.
-Scroll events
+
+### 时间（Events）
+以下事件与滚动相关：
+- `LV_EVENT_SCROLL_BEGIN` 开始滚动
+- `LV_EVENT_SCROLL_END` 结束滚动
+- `LV_EVENT_SCROLL` 正在滚动，每次位置变化时触发。
 
 ## Basic example
 TODO
 
-## Features of scrolling
+## 滚动的特点（Features of scrolling）
 
-Besides, managing "normal" scrolling there are many interesting and useful additional features.
+滚动有许多有用的附加功能。
+
+### 可滚动性（Scrollable）
+
+可以通过函数 `lv_obj_clear_flag(obj, LV_OBJ_FLAG_SCROLLABLE)`使对象不可滚动。
+
+不可滚动的对象仍然可以将滚动（链）传播到它们的父对象。
+
+滚动发生的方向可以通过函数 `lv_obj_set_scroll_dir(obj, LV_DIR_...)` 控制。
+
+方向可能有以下值：
+- `LV_DIR_TOP` 只向上
+- `LV_DIR_LEFT` 只向左
+- `LV_DIR_BOTTOM` 只向下
+- `LV_DIR_RIGHT` 只向右
+- `LV_DIR_HOR` 水平滚动
+- `LV_DIR_TOP` 垂直滚动
+- `LV_DIR_ALL` 随意滚动
+
+同样可以使用或表达式： `LV_DIR_TOP | LV_DIR_LEFT`。
 
 
-### Scrollable
+### 滚动链（Scroll chain）
 
-It's possible to make an object non-scrollable with `lv_obj_clear_flag(obj, LV_OBJ_FLAG_SCROLLABLE)`.
+如果对象无法进一步滚动（例如其内容已到达最底部的位置），则额外的滚动会传播到其父对象。 如果父级可以在那个方向滚动，那么它将被滚动，同样的，它也继续传播给祖父母级和祖祖父母级。
 
-Non-scrollable objects can still propagate the scrolling (chain) to their parents.
+滚动传播称为“滚动链接”，可以使用 `LV_OBJ_FLAG_SCROLL_CHAIN` 标志来启用/禁用。
 
-The direction in which scrolling happens can be controlled by `lv_obj_set_scroll_dir(obj, LV_DIR_...)`.
-The following values are possible for the direction:
-- `LV_DIR_TOP` only scroll up
-- `LV_DIR_LEFT` only scroll left
-- `LV_DIR_BOTTOM` only scroll down
-- `LV_DIR_RIGHT` only scroll right
-- `LV_DIR_HOR` only scroll horizontally
-- `LV_DIR_TOP` only scroll vertically
-- `LV_DIR_ALL` scroll any directions
-
-OR-ed values are also possible. E.g. `LV_DIR_TOP | LV_DIR_LEFT`.
-
-
-### Scroll chain
-If an object can't be scrolled further (e.g. its content has reached the bottom-most position) additional scrolling is propagated to its parent. If the parent can be scrolled in that direction than it will be scrolled instead.
-It continues propagating to the grandparent and grand-grandparents as well.
-
-The propagation on scrolling is called "scroll chaining" and it can be enabled/disabled with the `LV_OBJ_FLAG_SCROLL_CHAIN` flag. 
 If chaining is disabled the propagation stops on the object and the parent(s) won't be scrolled.
 
 ### Scroll momentum
